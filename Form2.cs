@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace csanimation
@@ -21,10 +15,15 @@ namespace csanimation
             this.AllowTransparency = true;
             this.BackColor = Color.AliceBlue;  
             this.TransparencyKey = this.BackColor;
-            pictureBox1.Click += (_,_)=> {
-                pictureBox1.Location = new Point(pictureBox1.Location.X - 21, pictureBox1.Location.Y);
-                progressBar1.Value -= progressBar1.Step * 3;
-            };
+
+            pictureBox1.Click += (_, _) =>
+                {
+                    if (progressBar1.Value < progressBar1.Maximum - 14)
+                    {
+                        pictureBox1.Location = new Point(pictureBox1.Location.X + 13, pictureBox1.Location.Y);
+                        progressBar1.Value += 13;
+                    }
+                };
         }
 
         private void timer1_Tick(object sender, EventArgs e)
