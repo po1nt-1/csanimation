@@ -50,8 +50,10 @@ namespace csanimation
                 Point[] curve3 = new Point[2 * shir];
                 Point[] curve4 = new Point[2 * shir];
                 Point[] curve5 = new Point[2 * shir];
-                int total = 5;
+                Point[] curve6 = new Point[2 * shir];
+                int total = 6;
                 double alpha = 0;
+                int curveWidth = (endY - startY) / total;
 
                 int x = h + startX;
                 int y = v + startY;
@@ -66,14 +68,14 @@ namespace csanimation
                     h += 5;
                     dir = rnd.Next(1, 9);
                 }
-                if (y + endY >= pictureBox1.Size.Height)
-                {
-                    v -= 5;
-                    dir = rnd.Next(1, 9);
-                }
-                if (y <= 0)
+                if (y - curveWidth * 0.5 <= 0)
                 {
                     v += 5;
+                    dir = rnd.Next(1, 9);
+                }
+                if (y + (endY - startY) + curveWidth * 0.5 >= pictureBox1.Size.Height)
+                {
+                    v -= 5;
                     dir = rnd.Next(1, 9);
                 }
 
@@ -83,34 +85,40 @@ namespace csanimation
                     curve1[i].X = x + i;
                     curve1[i].Y = v + (int)(startY + (endY - startY) / 10 * Math.Sin(alpha + betta));
                     curve1[2 * shir - 1 - i].X = x + i;
-                    curve1[2 * shir - 1 - i].Y = curve1[i].Y + (endY - startY) / total;
+                    curve1[2 * shir - 1 - i].Y = curve1[i].Y + curveWidth;
 
                     curve2[i].X = x + i;
                     curve2[i].Y = curve1[2 * shir - 1 - i].Y;
                     curve2[2 * shir - 1 - i].X = x + i;
-                    curve2[2 * shir - 1 - i].Y = curve2[i].Y + (endY - startY) / total;
+                    curve2[2 * shir - 1 - i].Y = curve2[i].Y + curveWidth;
 
                     curve3[i].X = x + i;
                     curve3[i].Y = curve2[2 * shir - 1 - i].Y;
                     curve3[2 * shir - 1 - i].X = x + i;
-                    curve3[2 * shir - 1 - i].Y = curve3[i].Y + (endY - startY) / total;
+                    curve3[2 * shir - 1 - i].Y = curve3[i].Y + curveWidth;
 
                     curve4[i].X = x + i;
                     curve4[i].Y = curve3[2 * shir - 1 - i].Y;
                     curve4[2 * shir - 1 - i].X = x + i;
-                    curve4[2 * shir - 1 - i].Y = curve4[i].Y + (endY - startY) / total;
+                    curve4[2 * shir - 1 - i].Y = curve4[i].Y + curveWidth;
 
                     curve5[i].X = x + i;
                     curve5[i].Y = curve4[2 * shir - 1 - i].Y;
                     curve5[2 * shir - 1 - i].X = x + i;
-                    curve5[2 * shir - 1 - i].Y = curve5[i].Y + (endY - startY) / total;
+                    curve5[2 * shir - 1 - i].Y = curve5[i].Y + curveWidth;
+
+                    curve6[i].X = x + i;
+                    curve6[i].Y = curve5[2 * shir - 1 - i].Y;
+                    curve6[2 * shir - 1 - i].X = x + i;
+                    curve6[2 * shir - 1 - i].Y = curve6[i].Y + curveWidth;
                 }
                 graph.Clear(pictureBox1.BackColor);
-                graph.FillPolygon(new SolidBrush(Color.Green), curve1);
+                graph.FillPolygon(new SolidBrush(Color.White), curve1);
                 graph.FillPolygon(new SolidBrush(Color.White), curve2);
                 graph.FillPolygon(new SolidBrush(Color.Blue), curve3);
-                graph.FillPolygon(new SolidBrush(Color.Orange), curve4);
+                graph.FillPolygon(new SolidBrush(Color.Blue), curve4);
                 graph.FillPolygon(new SolidBrush(Color.Red), curve5);
+                graph.FillPolygon(new SolidBrush(Color.Red), curve6);
                 betta += (Math.PI / 18);
 
                 if (dir == 4)
@@ -143,7 +151,7 @@ namespace csanimation
                 }
 
             }
-            this.Text = $"X1={Convert.ToString(startX)}, X1={Convert.ToString(startY)}, X2={Convert.ToString(endX)}, X2={Convert.ToString(endY)}, ширина: {endX - startX}";
+            this.Text = $"X1={Convert.ToString(startX)}, Y1={Convert.ToString(startY)}, X2={Convert.ToString(endX)}, Y2={Convert.ToString(endY)}, ширина: {endX - startX}";
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)

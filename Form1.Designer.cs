@@ -53,13 +53,12 @@ namespace csanimation
             this.tableLayoutPanelBase.Controls.Add(this.tableLayoutPanelLeft, 0, 0);
             this.tableLayoutPanelBase.Controls.Add(this.tableLayoutPanelRight, 1, 0);
             this.tableLayoutPanelBase.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tableLayoutPanelBase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelBase.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelBase.Name = "tableLayoutPanelBase";
             this.tableLayoutPanelBase.RowCount = 1;
             this.tableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 361F));
             this.tableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 361F));
-            this.tableLayoutPanelBase.Size = new System.Drawing.Size(634, 361);
+            this.tableLayoutPanelBase.Size = new System.Drawing.Size(635, 361);
             this.tableLayoutPanelBase.TabIndex = 0;
             // 
             // tableLayoutPanelLeft
@@ -78,7 +77,7 @@ namespace csanimation
             this.tableLayoutPanelLeft.RowCount = 2;
             this.tableLayoutPanelLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelLeft.Size = new System.Drawing.Size(120, 355);
+            this.tableLayoutPanelLeft.Size = new System.Drawing.Size(121, 355);
             this.tableLayoutPanelLeft.TabIndex = 2;
             // 
             // buttonStart
@@ -91,7 +90,7 @@ namespace csanimation
             this.buttonStart.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonStart.Location = new System.Drawing.Point(3, 3);
             this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(114, 171);
+            this.buttonStart.Size = new System.Drawing.Size(115, 171);
             this.buttonStart.TabIndex = 4;
             this.buttonStart.Text = "start";
             this.buttonStart.UseVisualStyleBackColor = true;
@@ -108,7 +107,7 @@ namespace csanimation
             this.buttonStop.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonStop.Location = new System.Drawing.Point(3, 180);
             this.buttonStop.Name = "buttonStop";
-            this.buttonStop.Size = new System.Drawing.Size(114, 172);
+            this.buttonStop.Size = new System.Drawing.Size(115, 172);
             this.buttonStop.TabIndex = 5;
             this.buttonStop.Text = "stop";
             this.buttonStop.UseVisualStyleBackColor = true;
@@ -116,14 +115,14 @@ namespace csanimation
             // 
             // tableLayoutPanelRight
             // 
+            this.tableLayoutPanelRight.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tableLayoutPanelRight.AutoSize = true;
             this.tableLayoutPanelRight.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tableLayoutPanelRight.ColumnCount = 1;
             this.tableLayoutPanelRight.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelRight.Controls.Add(this.pictureBox1, 0, 0);
             this.tableLayoutPanelRight.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tableLayoutPanelRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelRight.Location = new System.Drawing.Point(129, 3);
+            this.tableLayoutPanelRight.Location = new System.Drawing.Point(130, 3);
             this.tableLayoutPanelRight.Name = "tableLayoutPanelRight";
             this.tableLayoutPanelRight.RowCount = 1;
             this.tableLayoutPanelRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -156,9 +155,11 @@ namespace csanimation
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(634, 361);
             this.Controls.Add(this.tableLayoutPanelBase);
-            this.MinimumSize = new System.Drawing.Size(475, 50);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(650, 400);
+            this.MinimumSize = new System.Drawing.Size(650, 400);
             this.Name = "Form1";
-            this.Opacity = 0.98D;
+            this.Opacity = 0.97D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Flag";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
