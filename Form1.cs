@@ -19,6 +19,8 @@ namespace csanimation
         int v;
         int dir;
 
+        int speed;
+
 
         public Form1()
         {
@@ -33,6 +35,7 @@ namespace csanimation
             animationEnabled = !animationEnabled;
             buttonStart.Enabled = !buttonStart.Enabled;
             buttonStop.Enabled = !buttonStop.Enabled;
+            speed = 2;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -60,24 +63,30 @@ namespace csanimation
 
                 if (x + endX >= pictureBox1.Size.Width)
                 {
+                    speed += rnd.Next(1, 4);
                     h -= 5;
                     dir = rnd.Next(1, 9);
                 }
                 if (x <= 0)
                 {
+                    speed += rnd.Next(1, 4);
                     h += 5;
                     dir = rnd.Next(1, 9);
                 }
                 if (y - curveWidth * 0.5 <= 0)
                 {
+                    speed += rnd.Next(1, 4);
                     v += 5;
                     dir = rnd.Next(1, 9);
                 }
                 if (y + (endY - startY) + curveWidth * 0.5 >= pictureBox1.Size.Height)
                 {
+                    speed += rnd.Next(1, 4);
                     v -= 5;
                     dir = rnd.Next(1, 9);
                 }
+
+                this.Text = $"Текущая скорость = {speed}";
 
                 for (int i = 0; i < endX; i++)
                 {
@@ -122,36 +131,43 @@ namespace csanimation
                 betta += (Math.PI / 18);
 
                 if (dir == 4)
-                    h += 4;
+                {
+                    h = h + 4 * speed;
+                }
                 else if (dir == 8)
-                    h -= 4;
+                {
+                    h = h - 4 * speed;
+                }
                 else if (dir == 6)
-                    v += 6;
+                {
+                    v = v + 6 * speed;
+                }
                 else if (dir == 2)
-                    v -= 6;
+                {
+                    v = v - 6 * speed;
+                }
                 else if (dir == 5)
                 {
-                    h += 4;
-                    v += 4;
+                    v = v + 4 * speed;
+                    h = h + 4 * speed;
                 }
                 else if (dir == 3)
                 {
-                    h += 4;
-                    v -= 4;
+                    v = v - 4 * speed;
+                    h = h + 4 * speed;
                 }
                 else if (dir == 7)
                 {
-                    h -= 4;
-                    v += 4;
+                    v = v + 4 * speed;
+                    h = h - 4 * speed;
                 }
                 else if (dir == 1)
                 {
-                    h -= 4;
-                    v -= 4;
+                    v = v - 4 * speed;
+                    h = h - 4 * speed;
                 }
 
             }
-            this.Text = $"X1={Convert.ToString(startX)}, Y1={Convert.ToString(startY)}, X2={Convert.ToString(endX)}, Y2={Convert.ToString(endY)}, ширина: {endX - startX}";
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
